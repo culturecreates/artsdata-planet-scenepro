@@ -29,11 +29,7 @@ jobs:
       - name: Download mapping file
         id: step-4
         run: |
-            curl 'https://raw.githubusercontent.com/culturecreates/artsdata-planet-scenepro/main/ontorefine/mapping.json' >> mapping.json
-
-      - name: Cat mapping file
-        run: |
-            cat mapping.json
+            curl 'https://raw.githubusercontent.com/culturecreates/artsdata-planet-scenepro/main/ontorefine/config.json' >> config.json
 
       - name: Transform entities in JSON  to RDF
         id: step-5
@@ -41,7 +37,7 @@ jobs:
             /opt/ontorefine/dist/bin/ontorefine-cli \
             transform entities.json \
             -u http://localhost:7333 \
-            --configurations mapping.json \
+            --configurations config.json \
             -f json >> scenepro-entities.ttl
 
       - name: Commit changes to GitHub
