@@ -23,13 +23,13 @@ jobs:
       - name: Download scenepro entities
         id: step-3
         run: |
-            curl -X GET 'https://public-api.scenepro.ca/capacoa/organizations/diffuser/0/200?networkId=2' \
+            curl 'https://public-api.scenepro.ca/capacoa/organizations/diffuser/0/200?networkId=2' \
             -H "Ocp-Apim-Subscription-Key: 44c4455927594abfb8127ec918b93c73;product=capacoa" >> entities.json
       
       - name: Download mapping file
         id: step-4
         run: |
-            curl -X GET 'https://raw.githubusercontent.com/culturecreates/artsdata-planet-scenepro/main/ontorefine/mapping.json' >> mapping.json
+            curl 'https://raw.githubusercontent.com/culturecreates/artsdata-planet-scenepro/main/ontorefine/mapping.json' >> mapping.json
         
 
       - name: Transform entities in JSON  to RDF
