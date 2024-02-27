@@ -24,7 +24,7 @@ jobs:
         id: step-3
         run: |
             curl 'https://public-api.scenepro.ca/capacoa/organizations/diffuser/0/200?networkId=2' \
-            -H "Ocp-Apim-Subscription-Key: 44c4455927594abfb8127ec918b93c73;product=capacoa" >> entities.json
+            -H "Ocp-Apim-Subscription-Key: ${{vars.SCENEPRO_KEY}}" >> entities.json
       
       - name: Download mapping file
         id: step-4
