@@ -35,17 +35,20 @@
           "schema": "http://schema.org/",
           "xsd": "http://www.w3.org/2001/XMLSchema#",
           "sp_concept": "https://scenepro.ca/id/concept/",
-          "skos": "http://www.w3.org/2004/02/skos/core#"
+          "skos": "http://www.w3.org/2004/02/skos/core#",
+          "sp_org": "http://scenepro.ca#Organization",
+          "sp_venue": "http://scenepro.ca/Venue#"
         },
         "subjectMappings": [
           {
             "subject": {
               "valueSource": {
-                "source": "row_index"
+                "source": "column",
+                "columnName": "_ - diffusers - _ - id"
               },
               "transformation": {
-                "language": "grel",
-                "expression": "\"http://scenepro.ca#Organization\" + cells[\"_ - diffusers - _ - id\"].value"
+                "language": "prefix",
+                "expression": "sp_org"
               }
             },
             "typeMappings": [
@@ -569,11 +572,12 @@
                           "values": [
                             {
                               "valueSource": {
-                                "source": "row_index"
+                                "source": "column",
+                                "columnName": "_ - diffusers - _ - venues - _ - id"
                               },
                               "transformation": {
-                                "language": "grel",
-                                "expression": "\"https://scenepro.ca/id/venue/\" +cells[\"_ - diffusers - _ - venues - _ - id\"].value"
+                                "language": "prefix",
+                                "expression": "sp_venue"
                               },
                               "valueType": {
                                 "type": "iri",
@@ -657,11 +661,12 @@
           {
             "subject": {
               "valueSource": {
-                "source": "row_index"
+                "source": "column",
+                "columnName": "_ - diffusers - _ - venues - _ - id"
               },
               "transformation": {
-                "language": "grel",
-                "expression": "\"http://scenepro.ca#Venue\" +cells[\"_ - diffusers - _ - venues - _ - id\"].value"
+                "language": "prefix",
+                "expression": "sp_venue"
               }
             },
             "typeMappings": [
