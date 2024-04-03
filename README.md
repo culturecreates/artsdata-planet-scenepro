@@ -3,9 +3,9 @@ Dataflow for ScenePro
 
 To edit mapping:
 
-1. Run docker-compose up
-2. Open localhost:7333 to run Open Refine workbench
-3. Open the existing project
+1. Run `docker compose up`
+2. Open localhost:7333 to use Open Refine workbench
+3. Open the existing project 
 4. Click "Edit RDF Mapping"
 5. When done making changes save RDF Mapping
 6. Clean up the history (tab undo/redo) to keep only the steps needed.
