@@ -6,5 +6,4 @@ services:
       - '7333:7333'
     volumes:
       - ./ontorefine:/opt/data
-    # command: /opt/ontorefine/dist/bin/ontorefine-cli transform ../data/entities.json --no-clean -u http://localhost:7333  --configurations ../data/config.json -f json >> scenepro-entities.ttl
      
