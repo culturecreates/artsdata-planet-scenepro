@@ -2,12 +2,14 @@
   "importOptions": [
     {
       "recordPath": [
+        "_",
+        "diffusers",
         "_"
       ],
       "limit": -1,
-      "trimStrings": false,
+      "trimStrings": true,
       "guessCellValueTypes": false,
-      "storeEmptyStrings": true,
+      "storeEmptyStrings": false,
       "includeFileSources": false,
       "includeArchiveFileName": false,
       "disableAutoPreview": true,
