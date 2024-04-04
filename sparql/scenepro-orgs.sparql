@@ -16,11 +16,9 @@ SELECT ?scenepro (sample(?name_language) as ?scenepro_name) ?artsdata (sample(?a
         ?artsdata schema:sameAs ?scenepro  ;
                   schema:name ?artsdata_name_language .
         filter(contains(str(?artsdata),"http://kg.artsdata.ca/"))
-    }
-    OPTIONAL {
-        ?artsdata   schema:sameAs ?scenepro ;
-                    schema:sameAs ?wikidata .
-        filter(contains(str(?wikidata),"wikidata.org/"))
-        filter(contains(str(?artsdata),"http://kg.artsdata.ca/"))
+        OPTIONAL {
+            ?artsdata   schema:sameAs ?wikidata .
+            filter(contains(str(?wikidata),"wikidata.org/"))
+        }
     }
 } GROUP BY ?scenepro ?artsdata ?wikidata ?url  ?resultSeverity
