@@ -37,7 +37,7 @@
           "sp_concept": "https://scenepro.ca/id/concept/",
           "skos": "http://www.w3.org/2004/02/skos/core#",
           "sp_org": "http://scenepro.ca#Organization",
-          "sp_venue": "http://scenepro.ca/Venue#"
+          "sp_venue": "http://scenepro.ca#Venue"
         },
         "subjectMappings": [
           {
