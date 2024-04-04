@@ -1,46 +1,26 @@
 PREFIX schema: <http://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
-SELECT ?uri (sample(?name_language) as ?name) ?aduri (sample(?artsdata_name_language) as ?artsdata_name)  ?wduri  ?url   ?resultSeverity  WHERE {
+SELECT ?scenepro (sample(?name_language) as ?scenepro_name) ?artsdata (sample(?artsdata_name_language) as ?artsdata_name)  ?wikidata  ?url   ?resultSeverity  WHERE {
     graph <http://kg.artsdata.ca/culture-creates/artsdata-planet-scenepro/scenepro-orgs> {
-        ?uri schema:name  ?name_language ;
-             a schema:Organization .
+        ?scenepro schema:name  ?name_language ;
+                  a schema:Organization .
         OPTIONAL {
-            ?uri schema:url ?url .
-            filter(!isBLANK(?url))
+            ?scenepro schema:url ?url .
         }
         OPTIONAL {
-            ?shacl sh:focusNode ?uri ;
+            ?shacl sh:focusNode ?scenepro ;
                    sh:resultSeverity ?resultSeverity .
         }
-        OPTIONAL {
-            ?uri schema:sameAs ?wduri .
-            filter(contains(str(?wduri),"http://www.wikidata.org/entity/Q"))
-        }
     }
     OPTIONAL {
-        ?aduri schema:sameAs ?uri  .
-        ?aduri schema:name ?artsdata_name_language .
-        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
+        ?artsdata schema:sameAs ?scenepro  ;
+                  schema:name ?artsdata_name_language .
+        filter(contains(str(?artsdata),"http://kg.artsdata.ca/"))
     }
     OPTIONAL {
-        ?uri   schema:sameAs ?aduri .
-        ?aduri schema:name ?artsdata_name_language .
-        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
+        ?artsdata   schema:sameAs ?scenepro ;
+                    schema:sameAs ?wikidata .
+        filter(contains(str(?wikidata),"wikidata.org/"))
+        filter(contains(str(?artsdata),"http://kg.artsdata.ca/"))
     }
-    OPTIONAL {
-        ?uri   schema:sameAs ?aduri .
-        ?wduri schema:sameAs ?aduri .
-        filter(contains(str(?wduri),"wikidata.org/"))
-        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
-    }
-    OPTIONAL {
-        ?aduri   schema:sameAs ?uri .
-        ?wduri schema:sameAs ?aduri .
-        filter(contains(str(?wduri),"wikidata.org/"))
-        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
-    }
-    OPTIONAL {
-        ?wduri schema:sameAs ?uri .
-        filter(contains(str(?wduri),"wikidata.org/"))
-    }
-} GROUP BY ?uri ?aduri ?wduri ?url  ?resultSeverity
+} GROUP BY ?scenepro ?artsdata ?wikidata ?url  ?resultSeverity
