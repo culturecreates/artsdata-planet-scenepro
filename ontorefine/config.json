@@ -2,8 +2,6 @@
   "importOptions": [
     {
       "recordPath": [
-        "_",
-        "diffusers",
         "_"
       ],
       "limit": -1,
