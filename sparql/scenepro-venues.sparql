@@ -10,25 +10,25 @@ SELECT ?uri (sample(?name_language) as ?scenepro_name) ?aduri  (sample(?artsdata
         }
         OPTIONAL {
             ?shacl sh:focusNode ?uri ;
-                sh:resultSeverity ?resultSeverity .
+                   sh:resultSeverity ?resultSeverity .
         }
-       
     }
-   
-     OPTIONAL {
-            ?aduri schema:sameAs ?uri ; schema:name ?artsdata_name_language .
-            filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
-            OPTIONAL {
-                ?wduri4 schema:sameAs ?aduri .
-                filter(contains(str(?wduri4),"wikidata.org/"))
-            }
-             OPTIONAL {
-                ?aduri schema:sameAs ?wduri4 .
-                filter(contains(str(?wduri4),"wikidata.org/"))
-            }
+    OPTIONAL {
+        ?uri schema:sameAs ?aduri .
+        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
+    }
+    OPTIONAL {
+        ?aduri schema:sameAs ?uri ;
+               schema:name ?artsdata_name_language .
+        filter(contains(str(?aduri),"http://kg.artsdata.ca/"))
+        OPTIONAL {
+            ?wduri4 schema:sameAs ?aduri .
+            filter(contains(str(?wduri4),"wikidata.org/"))
         }
-       
-
-        bind(COALESCE(?wduri2, ?wduri3, ?wduri4, ?wduri1) as ?wduri)
-        
+        OPTIONAL {
+            ?aduri schema:sameAs ?wduri4 .
+            filter(contains(str(?wduri4),"wikidata.org/"))
+        }
+    }
+    bind(COALESCE(?wduri2, ?wduri3, ?wduri4, ?wduri1) as ?wduri)
 } GROUP BY ?uri ?aduri  ?url  ?resultSeverity
