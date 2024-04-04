@@ -10,3 +10,8 @@ To edit RDF mapping:
 6. Clean up the history (tab undo/redo) to keep only the steps needed.
 6. Export > Export project configurations into Github /ontorefine/config.json
 
+# View reports on Artsdata.ca
+
+[Organizations with Wikidata](http://kg.artsdata.ca/query/show?sparql=https%3A%2F%2Fraw.githubusercontent.com%2Fculturecreates%2Fartsdata-planet-scenepro%2Fmain%2Fsparql%2Fscenepro-orgs.sparql&title=Organizations+ScenePro+Report)
+
+[Venues with Wikidata](http://kg.artsdata.ca/query/show?sparql=https%3A%2F%2Fraw.githubusercontent.com%2Fculturecreates%2Fartsdata-planet-scenepro%2Fmain%2Fsparql%2Fscenepro-venues.sparql&title=Venues+ScenePro+Report)
