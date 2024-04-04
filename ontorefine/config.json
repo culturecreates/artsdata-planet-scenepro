@@ -11,7 +11,7 @@
       "includeFileSources": false,
       "includeArchiveFileName": false,
       "disableAutoPreview": true,
-      "projectName": "cli-transform-entities.json-2024-04-03",
+      "projectName": "cli-transform-entities.json-2024-04-04",
       "projectTags": [],
       "fileSource": "entities.json",
       "archiveFileName": null
@@ -448,8 +448,13 @@
                       "source": "column",
                       "columnName": "_ - diffusers - _ - socialMediaAccounts - socialMediaAccounts"
                     },
+                    "transformation": {
+                      "language": "raw"
+                    },
                     "valueType": {
-                      "type": "literal"
+                      "type": "iri",
+                      "typeMappings": [],
+                      "propertyMappings": []
                     }
                   },
                   {
@@ -457,8 +462,13 @@
                       "source": "column",
                       "columnName": "_ - diffusers - _ - wikidataUri"
                     },
+                    "transformation": {
+                      "language": "raw"
+                    },
                     "valueType": {
-                      "type": "literal"
+                      "type": "iri",
+                      "typeMappings": [],
+                      "propertyMappings": []
                     }
                   },
                   {
@@ -466,8 +476,13 @@
                       "source": "column",
                       "columnName": "_ - diffusers - _ - artsdataUri"
                     },
+                    "transformation": {
+                      "language": "raw"
+                    },
                     "valueType": {
-                      "type": "literal"
+                      "type": "iri",
+                      "typeMappings": [],
+                      "propertyMappings": []
                     }
                   }
                 ]
@@ -485,11 +500,8 @@
                 "values": [
                   {
                     "valueSource": {
-                      "source": "row_index"
-                    },
-                    "transformation": {
-                      "language": "grel",
-                      "expression": "if(cells[\"_ - diffusers - _ - neq\"].value != \"\", cells[\"_ - diffusers - _ - neq\"].value, null)"
+                      "source": "column",
+                      "columnName": "_ - diffusers - _ - neq"
                     },
                     "valueType": {
                       "type": "literal"
@@ -849,8 +861,13 @@
                       "source": "column",
                       "columnName": "_ - diffusers - _ - venues - _ - artsdataUri"
                     },
+                    "transformation": {
+                      "language": "raw"
+                    },
                     "valueType": {
-                      "type": "literal"
+                      "type": "iri",
+                      "typeMappings": [],
+                      "propertyMappings": []
                     }
                   }
                 ]
@@ -873,7 +890,7 @@
                     },
                     "transformation": {
                       "language": "grel",
-                      "expression": "\"+1-\" + cells[\"_ - diffusers - _ - venues - _ - phone\"].value.replace(\" \", \"-\")  + if(and(cells[\"_ - diffusers - _ - venues - _ - phonePostNumber\"].value != \"\" , cells[\"_ - diffusers - _ - venues - _ - phonePostNumber\"].value != null), \";ext=\"+cells[\"_ - diffusers - _ - venues - _ - phonePostNumber\"].value , \"\")"
+                      "expression": "\"+1-\" + cells[\"_ - diffusers - _ - venues - _ - phone\"].value.replace(\" \", \"-\")  + if(cells[\"_ - diffusers - _ - venues - _ - phonePostNumber\"].value, \";ext=\"+cells[\"_ - diffusers - _ - venues - _ - phonePostNumber\"].value , \"\")"
                     },
                     "valueType": {
                       "type": "literal"
@@ -895,11 +912,8 @@
                 "values": [
                   {
                     "valueSource": {
-                      "source": "row_index"
-                    },
-                    "transformation": {
-                      "language": "grel",
-                      "expression": "if(cells[\"_ - diffusers - _ - venues - _ - website\"].value != \"\", cells[\"_ - diffusers - _ - venues - _ - website\"].value, null)"
+                      "source": "column",
+                      "columnName": "_ - diffusers - _ - venues - _ - website"
                     },
                     "valueType": {
                       "type": "literal"
