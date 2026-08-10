@@ -43,7 +43,7 @@ jobs:
             -f json >> scenepro-entities.ttl
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: scenepro-entities
           path: ./scenepro-entities.ttl
@@ -56,10 +56,10 @@ jobs:
         commit-hash: ${{ steps.get_commit_hash.outputs.commit-hash }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: scenepro-entities
           path: ./scenepro-entities
@@ -87,7 +87,7 @@ jobs:
     needs: commit-file-to-github
     steps:
       - name: Action setup
-        uses: culturecreates/artsdata-pipeline-action@v1.1.0
+        uses: culturecreates/artsdata-pipeline-action@v4
         with:
           artifact: scenepro-orgs
           publisher: "${{ secrets.PUBLISHER_URI_GREGORY }}"
